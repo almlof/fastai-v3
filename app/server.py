@@ -63,8 +63,8 @@ async def analyze(request):
     prediction,pred_idx,outputs = learn.predict(img)
     
     pred_id = to_np(pred_idx)
-    certaintiy = to_np(outputs)[pred_id]  
-        
+    certaintiy = round(to_np(outputs)[pred_id]*100,1)
+
     return JSONResponse({'result': str(prediction),'certainty': float(certaintiy)})
 
 
